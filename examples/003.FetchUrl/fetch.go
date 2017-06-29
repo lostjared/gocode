@@ -8,18 +8,14 @@ import (
 )
 
 func main() {
-
-	url_path := os.Args[1:]
-	if len(url_path) == 0 {
-		fmt.Println("Error requires argument containing path")
+	if len(os.Args) != 2 {
+		fmt.Println("Error requires one argument containing path")
 		os.Exit(1)
 	}
-	fetchUrl(url_path[0]);
-
+	fetchUrl(os.Args[1])
 }
 
 func fetchUrl(url string) {
-
 	response, err := http.Get(url)
 	if err != nil {
 		fmt.Println("Error could not access URL")
