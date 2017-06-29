@@ -24,7 +24,6 @@ func main() {
 }
 
 func countLines(filename string, channel chan<- int64, file_name chan<- string) {
-
 	f, err := os.Open(filename)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error could not open file: %v", err)
