@@ -1,5 +1,4 @@
 package main
-
 import (
 	"fmt"
 	"io/ioutil"
@@ -7,7 +6,6 @@ import (
 	"os"
 	"time"
 )
-
 func main() {
 	start_time := time.Now()
 	channel := make(chan string)
@@ -22,7 +20,6 @@ func main() {
 		fmt.Printf("%.2f seconds elapsed \n", time.Since(start_time).Seconds())
 	}
 }
-
 func fetchUrl(url string, channel chan<- string) {
 	start_time := time.Now()
 	response, err := http.Get(url)
