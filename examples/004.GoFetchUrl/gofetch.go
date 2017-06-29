@@ -25,6 +25,7 @@ func fetchUrl(url string, channel chan<- string) {
 		return
 	}
 	bytes, err := ioutil.ReadAll(response.Body)
+	response.Body.Close()
 	if err != nil {
 		channel <- fmt.Sprintf("Error reading %s : %v", url, err)
 	}
