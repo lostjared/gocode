@@ -6,7 +6,7 @@ import (
 )
 func main() {
 	if len(os.Args) <= 1 {
-		fmt.Fprintf(os.Stderr, "Error requires at least one argument.\n")
+		fmt.Fprintf(os.Stderr, "%s\n", "Error requires at least one argument.")
 		os.Exit(1)
 	}
 	channel := make(chan int64)
