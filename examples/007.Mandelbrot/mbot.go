@@ -40,18 +40,18 @@ func main() {
 
 	r, err := strconv.Atoi(os.Args[2])
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "Error: %v", err)
+		fmt.Fprintln(os.Stderr, "Error: ", err)
 		os.Exit(1)
 	}
 	g, err := strconv.Atoi(os.Args[3])
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "Error: %v", err)
+		fmt.Fprintln(os.Stderr, "Error: ", err)
 		os.Exit(1)
 	}
 
 	b, err := strconv.Atoi(os.Args[4])
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "Error: %v", err)
+		fmt.Fprintln(os.Stderr, "Error: ", err)
 		os.Exit(1)
 	}
 
