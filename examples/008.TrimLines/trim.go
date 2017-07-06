@@ -21,7 +21,6 @@ func checkPrint(value string) {
 }
 
 func main() {
-	fmt.Println("Trim Lines v1.0 - Jared\n\n")
 	if len(os.Args) != 2 {
 		fmt.Fprintln(os.Stdin, "Requires one argument of text file")
 		os.Exit(1)
