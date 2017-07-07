@@ -13,6 +13,7 @@ func checkPrint(value string) {
 	for _, i  := range(value)  {
 		if i != ' ' && i != '\t' && i != '\n' {
 			check = true
+			break
 		}
 	}
 	if check == true {
