@@ -39,7 +39,14 @@ func main() {
 	ptrManip(&s)
 	fmt.Println("Value after: ", s)
 	recursionCounter(0)
+	lambda := func(s string) {
+		fmt.Println(s, "!")
+	}
+	lambda("Hello World lambda")
 	os.Exit(0)
+
+
+
 }
 
 
