@@ -43,7 +43,7 @@ func main() {
 		os.Exit(1)
 	}
 	fn, err := os.Create(os.Args[2])
-	if err != nil {
+	if (err != nil) {
 		fmt.Fprintln(os.Stderr, "Error could not create file: ", err)
 		os.Exit(1)
 	}
