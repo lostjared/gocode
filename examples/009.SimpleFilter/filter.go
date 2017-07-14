@@ -51,6 +51,7 @@ func main() {
 
 	if (err != nil) {
 		fmt.Fprintln(os.Stderr, "Error could not open file: ", err)
+		os.Exit(1)
 	}
 
 	alpha, err := strconv.Atoi(os.Args[3])
