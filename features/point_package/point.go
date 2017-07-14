@@ -14,6 +14,11 @@ func (p* Point) setPoint (x,y int) {
 	p.Y = y
 }
 
+func (p* Point) clearPoint() {
+	p.X = 0
+	p.Y = 0
+}
+
 func (p Point) PrintPoint() {
 	fmt.Println("Point: (", p.X, ",", p.Y, ")")
 }
