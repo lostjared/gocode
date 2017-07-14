@@ -4,6 +4,6 @@ This repository is for the Code that I write while learning Go. The book I am re
 
 To compile this projects files copy to $GOPATH/src
 
-then go build / go install sould work
+then go build / go install should work
 
 
