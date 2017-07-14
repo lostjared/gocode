@@ -3,7 +3,7 @@ package main
 
 import ( 
 	"fmt"
-	"github.com/lostjared/gocode/features/point_package"
+	"gocode/features/point_package"
 )
 
 
