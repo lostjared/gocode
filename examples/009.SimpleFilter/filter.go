@@ -25,9 +25,7 @@ func FilterImage(im image.Image, alpha float32) image.Image {
 	nw := image.NewRGBA(image.Rect(0,0,s.Max.X, s.Max.Y))
 	for x := 0; x < s.Max.X; x++ {
 		for y := 0; y < s.Max.Y; y++ {
-			col := im.At(x, y)
-			value := procPixel(col, alpha)
-			nw.Set(x,y, value)
+			nw.Set(x,y, procPixel(im.At(x,y),alpha))
 		}
 	}
 	return nw
