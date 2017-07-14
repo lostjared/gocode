@@ -54,21 +54,19 @@ func main() {
 		os.Exit(1)
 	}
 
-	alpha, err := strconv.Atoi(os.Args[3])
+	alpha, err := strconv.ParseFloat(os.Args[3], 10)
 
 	if (err != nil) {
 		fmt.Fprintln(os.Stderr, "Error converting to float: ", err)
 		os.Exit(1)
 	}
 
-	alpha_value := float32(alpha)
-
 	img, err := png.Decode(ifn)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error could not open file: ", err)
 		os.Exit(1)
 	}
-	filtered_image := FilterImage(img,alpha_value)
+	filtered_image := FilterImage(img,float32(alpha))
 	png.Encode(fn, filtered_image)
 	fmt.Println("Image outputted to: ", os.Args[2])
 }
