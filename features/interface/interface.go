@@ -15,6 +15,10 @@ type Value struct {
 	value string
 }
 
+type Incorrect struct {
+	x,y,z int
+}
+
 type IntValue struct {
 	value int
 }
@@ -44,4 +48,9 @@ func main() {
 	var stri Symbols = "Hey whats up?"
 	o = stri
 	o.Write()
+
+// below will not work because it does not implement the Write method for interface Output
+//	var err Incorrect = Incorrect{10,20,30}
+//	o = err
+
 }
