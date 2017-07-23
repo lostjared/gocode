@@ -1,3 +1,22 @@
+
+/*
+
+Go programming practice example
+M3U Generator (by Filename)
+The Program should be run from the directory you want to generate the playlist for.
+It ues relative path names for the filenames it outputs to the list
+
+m3ugen playlistname.m3u path
+
+I use the program by entering the directory I want to generate a playlist for and
+
+$ m3ugen playlist.m3u .
+
+- Jared
+
+*/
+
+
 package main
 
 import(
@@ -41,8 +60,8 @@ func processDirectory(f io.Writer, name string, num_files *int) int {
 
 func main() {
 	fmt.Println("M3U_Gen Go v1.0")
-	if(len(os.Args) != 4) {
-		fmt.Fprintln(os.Stderr,"Program requires 3 arguments\nm3ugen playlist.m3u directory [ -s for sort -r for reverse sort ]")
+	if(len(os.Args) != 3) {
+		fmt.Fprintln(os.Stderr,"Program requires 2 arguments\nm3ugen playlist.m3u directory")
 		os.Exit(1)
 	}
 	f_output,err := os.Create(os.Args[1])
