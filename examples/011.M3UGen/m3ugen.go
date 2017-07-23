@@ -27,6 +27,8 @@ import(
 	"io"
 )
 
+const VERSION_INFO  = "v1.01"
+
 var file_types = []string {
 	".wav",
 	".mp3",
@@ -38,9 +40,10 @@ var file_types = []string {
 type M3U_Info struct {
 	f io.Writer
 	num_files rune
+
 }
 
-func processDirectory(info *M3U_Info, name string) rune {
+func (info *M3U_Info) processDirectory(name string) rune {
 	dir,err := ioutil.ReadDir(name)
 	if (err != nil) {
 		fmt.Fprintln(os.Stderr, "Error reading directory: ", name)
@@ -48,7 +51,7 @@ func processDirectory(info *M3U_Info, name string) rune {
 	}
 	for _, i := range(dir) {
 		if (i.IsDir()) {
-			processDirectory(info, name + "/" + i.Name())
+			info.processDirectory(name + "/" + i.Name())
 			continue
 		}
 		lower_name := strings.ToLower(i.Name())
@@ -64,7 +67,7 @@ func processDirectory(info *M3U_Info, name string) rune {
 }
 
 func main() {
-	fmt.Println("M3U_Gen Go v1.0")
+	fmt.Println("M3U_Gen Go ", VERSION_INFO)
 	if(len(os.Args) != 3) {
 		fmt.Fprintln(os.Stderr,"Program requires 2 arguments\nm3ugen playlist.m3u directory")
 		os.Exit(1)
@@ -75,7 +78,7 @@ func main() {
 		os.Exit(1)
 	}
 	info := M3U_Info{f_output, 0}
-	counted := processDirectory(&info, os.Args[2])
+	counted := info.processDirectory(os.Args[2])
 	f_output.Close()
 	fmt.Println("Processed ", counted, " files written to ", os.Args[1])
 	os.Exit(0)
