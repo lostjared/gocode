@@ -66,7 +66,7 @@ func main() {
 	}
 	f_output,err := os.Create(os.Args[1])
 	if(err != nil) {
-		fmt.Fprintln(os.Stderr,"Error could not open file to write playlist too: ", err)
+		fmt.Fprintln(os.Stderr,"Error could not open file to write playlist to: ", err)
 		os.Exit(1)
 	}
 	num_files := 0
