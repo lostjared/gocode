@@ -35,7 +35,12 @@ var file_types = []string {
 	".m4a",
 }
 
-func processDirectory(f io.Writer, name string, num_files *int) int {
+type M3U_Info struct {
+	f io.Writer
+	num_files rune
+}
+
+func processDirectory(info *M3U_Info, name string) rune {
 	dir,err := ioutil.ReadDir(name)
 	if (err != nil) {
 		fmt.Fprintln(os.Stderr, "Error reading directory: ", name)
@@ -43,19 +48,19 @@ func processDirectory(f io.Writer, name string, num_files *int) int {
 	}
 	for _, i := range(dir) {
 		if (i.IsDir()) {
-			processDirectory(f, name + "/" + i.Name(), num_files)
+			processDirectory(info, name + "/" + i.Name())
 			continue
 		}
 		lower_name := strings.ToLower(i.Name())
 		for _, z := range (file_types) {
 			if(strings.Contains(lower_name, z) == true) {
-				fmt.Fprintf(f, "%s\n", name+"/"+i.Name())
-				*num_files ++
+				fmt.Fprintf(info.f, "%s\n", name+"/"+i.Name())
+				info.num_files ++
 				continue
 			}
 		}
 	}
-	return *num_files
+	return info.num_files
 }
 
 func main() {
@@ -69,8 +74,8 @@ func main() {
 		fmt.Fprintln(os.Stderr,"Error could not open file to write playlist to: ", err)
 		os.Exit(1)
 	}
-	num_files := 0
-	counted := processDirectory(f_output, os.Args[2], &num_files)
+	info := M3U_Info{f_output, 0}
+	counted := processDirectory(&info, os.Args[2])
 	f_output.Close()
 	fmt.Println("Processed ", counted, " files written to ", os.Args[1])
 	os.Exit(0)
