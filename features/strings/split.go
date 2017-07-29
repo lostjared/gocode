@@ -17,6 +17,7 @@ func readAndTokenize(source string) []string {
 	s, err := ioutil.ReadAll(fptr)
 	if(err != nil) {
 		fmt.Fprintln(os.Stderr, "Error could not read file: ", source, " Error: ", err)
+		os.Exit(1)
 	}
 	fptr.Close()
 	return strings.Split(string(s), " ")
