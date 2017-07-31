@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"sync"
+	"time"
+	"math/rand"
 )
 
 func procData() {
@@ -13,10 +15,10 @@ func procData() {
 		wt.Add(1)
 		go func(x int) {
 			defer wt.Done()
+			time.Sleep((time.Duration(rand.Intn(100)) * time.Millisecond))
 			fmt.Println("Go routine.. ")
 			channel <- fmt.Sprintf("Value %d", x)
 		}(i)
-
 	}
 	go func() {
 		wt.Wait()
