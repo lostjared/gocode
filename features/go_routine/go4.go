@@ -14,7 +14,7 @@ func procData() {
 		go func(x int) {
 			defer wt.Done()
 			fmt.Println("Go routine.. ")
-			channel <- fmt.Sprintf("Value %d\n", x)
+			channel <- fmt.Sprintf("Value %d", x)
 		}(i)
 
 	}
