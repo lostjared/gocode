@@ -31,13 +31,10 @@ func SearchFile(filename string, search_string string, done chan<- int) {
 }
 
 func SearchFiles(search []string, search_string string) {
-
 	ch := make(chan int)
-
 	for _, i := range search {
 		go SearchFile(i, search_string, ch)
 	}
-
 	for i := 0; i < len(search); i++ {
 		<-ch
 	}
