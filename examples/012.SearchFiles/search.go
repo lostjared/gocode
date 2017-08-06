@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"io/ioutil"
-	"strings"
+	"regexp"
 )
 
 func SearchFile(filename string, search_string string, done chan<- int) {
@@ -21,7 +21,8 @@ func SearchFile(filename string, search_string string, done chan<- int) {
 		done <- 0
 		return
 	}
-	if strings.Contains(string(file_data), search_string) {
+	r, _ := regexp.Compile(search_string)
+	if(r.FindString(string(file_data)) != "") {
 		fmt.Println(filename, ": Search String Found")
 	} else {
 		fmt.Println(filename, ": Search String Not Found")
