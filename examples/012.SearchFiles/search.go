@@ -5,11 +5,7 @@ import (
 	"os"
 	"io/ioutil"
 	"strings"
-	"sync"
 )
-
-var mut sync.Mutex
-
 
 func SearchFile(filename string, search_string string, done chan<- int) {
 	f, err := os.Open(filename)
