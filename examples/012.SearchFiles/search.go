@@ -11,12 +11,14 @@ func SearchFile(filename string, search_string string, done chan<- int) {
 	f, err := os.Open(filename)
 	if err != nil {
 		fmt.Println("Could not open: ", filename)
+		done <- 0
 		return
 	}
 	defer f.Close()
 	file_data, err := ioutil.ReadAll(f)
 	if err != nil {
 		fmt.Println("Error could not read file: ", err)
+		done <- 0
 		return
 	}
 	if strings.Contains(string(file_data), search_string) {
