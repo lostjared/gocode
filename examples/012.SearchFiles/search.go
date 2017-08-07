@@ -41,7 +41,7 @@ func SearchFiles(search []string, search_string string) {
 }
 
 func main() {
-	if len(os.Args) < 2 {
+	if len(os.Args) <= 2 {
 		fmt.Fprintln(os.Stderr, "Requires at least two arguments")
 		os.Exit(0)
 	}
