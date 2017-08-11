@@ -46,9 +46,6 @@ func main() {
 		os.Exit(0)
 	}
 	search_string := os.Args[1]
-	var search []string
-	for i := 2; i < len(os.Args); i++ {
-		search = append(search, os.Args[i])
-	}
-	SearchFiles(search[:], search_string)
+	search := os.Args[2:]
+	SearchFiles(search, search_string)
 }
