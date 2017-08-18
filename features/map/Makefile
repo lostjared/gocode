@@ -1,4 +1,5 @@
 all:
-	go build
+	go build maptest.go
+	go build map_dup.go
 clean:
-	rm -f map
+	rm -f maptest map_dup
