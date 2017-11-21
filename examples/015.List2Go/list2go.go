@@ -1,17 +1,13 @@
 package main
 
-
 import (
 	"fmt"
 	"os"
 	"bufio"
 )
 
-
 func fixEscape(s string) string {
-
 	var temp string
-
 	for i := 0; i < len(s); i++  {
 		if(s[i] == '\\' || s[i] == '"') {
 			temp += string('\\')
@@ -22,9 +18,7 @@ func fixEscape(s string) string {
 
 	}
 	return temp
-
 }
-
 
 func readData(name string) {
 	fmt.Printf("%s := []string {\n", name)
@@ -47,12 +41,10 @@ func readData(name string) {
 }
 
 func main() {
-
 	if len(os.Args) == 2 {
 		readData(os.Args[1])
 
 	} else {
-
 		fmt.Println("Arguments: varname")
 		os.Exit(1)
 	}
