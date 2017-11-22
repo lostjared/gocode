@@ -21,7 +21,8 @@ func fixEscape(s string) string {
 }
 
 func readData(name string) {
-	fmt.Printf("%s := []string {\n", name)
+	fmt.Printf("func %s () (int, []string) {\n\n", name)
+	fmt.Printf("\t%s_arr := []string {\n", name)
 	scan := bufio.NewScanner(os.Stdin)
 	var scanlines []string
 	count := 0
@@ -32,12 +33,13 @@ func readData(name string) {
 	}
 	for i := 0; i < count; i++ {
 		if (i < count-1) {
-			fmt.Fprintf(os.Stdout, "\"%s\",\n", scanlines[i])
+			fmt.Fprintf(os.Stdout, "\t\"%s\",\n", scanlines[i])
 		} else {
-			fmt.Fprintf(os.Stdout, "\"%s\" }\n", scanlines[i])
+			fmt.Fprintf(os.Stdout, "\t\"%s\" }\n", scanlines[i])
 		}
 	}
-	fmt.Fprintf(os.Stdout, "\n%s_count := %d\n\n", name, count)
+	fmt.Fprintf(os.Stdout, "\n\t%s_count := %d\n", name, count)
+	fmt.Fprintf(os.Stdout, "\treturn %s_count, %s_arr\n\n}\n\n", name, name)
 }
 
 func main() {
